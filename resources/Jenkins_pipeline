@@ -1,0 +1,15 @@
+@Library('your-shared-library-name') _
+pipeline {
+    agent any
+
+    stages {
+        stage('Build and Deploy') {
+            steps {
+                script {
+                    // Call the wrapper function from the shared library
+                    deployToECSWrapper()
+                }
+            }
+        }
+    }
+}
