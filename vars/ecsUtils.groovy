@@ -5,6 +5,7 @@ def call(String imageUri) {
     "networkMode": "awsvpc",
     "requiresCompatibilities": ["FARGATE"],
     "executionRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
+    "taskRoleArn": "arn:aws:iam::491396807599:role/ecsTaskRole",
     "cpu": "256",
     "memory": "512",
     "containerDefinitions": [
