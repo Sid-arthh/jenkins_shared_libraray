@@ -13,7 +13,7 @@ def call(String imageUri) {
         sh "aws ecs update-service --cluster $ECS_CLUSTER_NAME --service $ECS_SERVICE_NAME  --region ${AWS_REGION} --desired-count 1 --force-new-deployment"
     } else {
 
-        sh "aws ecs create-service --cluster $ECS_CLUSTER_NAME --service-name $ECS_SERVICE_NAME --task-definition ${taskDefinitionArn} --desired-count 1 --network-configuration awsvpcConfiguration={subnets=[subnet-077af9deb91d7b570]} --region ${AWS_REGION}"
+        sh "aws ecs create-service --cluster $ECS_CLUSTER_NAME --service-name $ECS_SERVICE_NAME --task-definition ${taskDefinitionArn} --desired-count 1 --network-configuration awsvpcConfiguration={subnets=[subnet-026a4de3b32ce30d4,subnet-064d3272b4081aa26]} --region ${AWS_REGION}"
     }
 
 }
