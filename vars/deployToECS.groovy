@@ -1,7 +1,7 @@
 def call(String imageUri) {
     def taskDefinition = ecsUtils(imageUri)
     echo "Generated Task Definition: ${taskDefinition}"
-    sh "aws ecs register-task-definition --cli-input-json '${taskDefinition}' --version 10 --region ${AWS_REGION}"
+    sh "aws ecs register-task-definition --cli-input-json '${taskDefinition}' --region ${AWS_REGION}"
     def serviceExists = sh(script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION}", returnStatus: true)
     echo "Value of it is ${serviceExists}"
     if (serviceExists != 0) {
