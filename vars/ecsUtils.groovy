@@ -1,7 +1,7 @@
 def call(String imageUri) {
     def taskDefinition = """
     {
-    "family": "nginx-task",
+    "family": "nginx-new",
     "networkMode": "awsvpc",
     "requiresCompatibilities": ["FARGATE"],
     "executionRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
