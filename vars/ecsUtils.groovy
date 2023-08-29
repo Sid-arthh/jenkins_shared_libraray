@@ -8,7 +8,7 @@ def call(String imageUri) {
     "containerDefinitions": [
         {
             "name": "nginx-container",
-            "image": ${imageUri},
+            "image": "'${imageUri}'",
             "memory": 512,
             "cpu": 256,
             "essential": true,
