@@ -10,7 +10,7 @@ def call(String imageUri) {
     "containerDefinitions": [
         {
             "name": "nginx-container",
-            "image": "public.ecr.aws/nginx/nginx:mainline-alpine",
+            "image": "'${imageUri}'",
             "memory": 512,
             "essential": true,
             "portMappings": [
