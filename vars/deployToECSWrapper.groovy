@@ -7,8 +7,7 @@ def call() {
     ]]) {
         def ecrRepoName = 'your-ecr-repo-name'
         def imageUri = "${ecrRepoName}:latest"
-
-        def ecsUtils = load 'ecsUtils.groovy'
-        ecsUtils(imageUri)
+        
+        deployToECS(imageUri)
     }
 }
