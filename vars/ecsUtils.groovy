@@ -4,11 +4,11 @@ def call(String imageUri) {
     "family": "nginx-task",
     "networkMode": "awsvpc",
     "requiresCompatibilities": ["FARGATE"],
-    "executionRoleArn": "arn:aws:iam::${AWS::AccountId}:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
     "containerDefinitions": [
         {
             "name": "nginx-container",
-            "image": imageUri,
+            "image": ${imageUri},
             "memory": 512,
             "cpu": 256,
             "essential": true,
