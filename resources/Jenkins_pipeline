@@ -1,7 +1,10 @@
 @Library('your-shared-library-name') _
 pipeline {
     agent any
-
+    environment {
+        ECS_CLUSTER_NAME = 'your-ecs-cluster-name'
+        ECS_SERVICE_NAME = 'your-ecs-service-name'
+    }
     stages {
         stage('Build and Deploy') {
             steps {
