@@ -7,7 +7,6 @@ def call(String imageUri) {
     "executionRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
     "cpu": "256",
     "memory": "512",
-    "desiredCount": "1",
     "containerDefinitions": [
         {
             "name": "nginx-container",
