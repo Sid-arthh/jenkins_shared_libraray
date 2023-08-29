@@ -1,23 +1,31 @@
 def call(String imageUri) {
     def taskDefinition = """
     {
-    "family": "nginxx",
+    "family": "nginx-2",
     "networkMode": "awsvpc",
-    "requiresCompatibilities": ["FARGATE"],
+    "taskRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
-    "taskRoleArn": "arn:aws:iam::491396807599:role/ecsTaskRole",
-    "cpu": "256",
-    "memory": "512",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
     "containerDefinitions": [
         {
             "name": "nginx-container",
             "image": "'${imageUri}'",
-            "memory": 512,
+            "cpu": 1024,
             "essential": true,
             "portMappings": [
                 {
+                    "name": "ngin-80-tcp",
                     "containerPort": 80,
-                    "hostPort": 80
+                    "hostPort": 80,
+                    "protocol": "tcp"
                 }
             ]
         }
