@@ -6,7 +6,7 @@ def call() {
         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
     ]]) {
         // def ecrRepoName = 'your-ecr-repo-name'
-        def imageUri = "public.ecr.aws/nginx/nginx:latest"
+        def imageUri = "nginx:latest"
         
         deployToECS(imageUri)
     }
