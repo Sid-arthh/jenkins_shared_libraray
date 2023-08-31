@@ -11,6 +11,7 @@ pipeline {
             steps {
                 script {
                     // Call the wrapper function from the shared library
+                    import groovy.json.JsonSlurper
                     deployToECSWrapper()
                 }
             }
