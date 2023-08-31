@@ -10,6 +10,22 @@ def call(String imageUri) {
     script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION} ",
     returnStdout: true
         ).trim()
+                        // Find the index of "status" within the JSON
+    int statusIndex = serviceExistsOutput.indexOf("\"status\":")
+    if (statusIndex != -1) {
+        int statusValueStart = serviceExistsOutput.indexOf("\"", statusIndex + 9)
+        int statusValueEnd = serviceExistsOutput.indexOf("\"", statusValueStart + 1)
+        if (statusValueStart != -1 && statusValueEnd != -1) {
+            def extractedStatus = serviceExistsOutput.substring(statusValueStart + 1, statusValueEnd)
+            echo "Extracted Status: $extractedStatus"
+            } 
+        else {
+                 echo "Unable to extract status"
+             }
+     } 
+    else {
+             echo "Status field not found"
+                    }
     // echo serviceExistsOutput
     //                     // Extract the value after '--services'
     // def match = serviceExistsOutput =~ /"status":\s*"([^"]*)"/
