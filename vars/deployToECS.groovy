@@ -11,17 +11,9 @@ def call(String imageUri) {
     returnStdout: true
         )
 
-    def jsonSlurper = new JsonSlurper()
-    def parsedOutput = jsonSlurper.parseText(serviceExistsOutput)
-
-// Access the 'status' value
-    def status = parsedOutput.services[0].status
-
-    echo "Service Status: $status"
-
-    // def serviceExists = new groovy.json.JsonSlurper().parseText(serviceExistsOutput)
+    def serviceExists = new groovy.json.JsonSlurper().parseText(serviceExistsOutput)
     // def serviceExists = sh(script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION}",returnStdout: true)
-    // echo "Returning ${serviceExists.services.status}"
+    echo "Returning ${serviceExists.services.status}"
     // echo "yeyee $serviceExistsOutput ------------"
     // if("$serviceExists.services.status"!='INACTIVE' || "$serviceExists".isEmpty())
     // //     {
