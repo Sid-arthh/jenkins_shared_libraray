@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = "us-east-1"
         ECS_CLUSTER_NAME = 'SHARED_LIB'
-        ECS_SERVICE_NAME = 'SERVICE2'
+        ECS_SERVICE_NAME = 'SERVICE3'
     }
     stages {
         stage('Build and Deploy') {
