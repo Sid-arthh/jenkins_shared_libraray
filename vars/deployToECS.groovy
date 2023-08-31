@@ -9,17 +9,20 @@ def call(String imageUri) {
     def serviceExistsOutput = sh(
     script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION} ",
     returnStdout: true
-        )
-    
+        ).trim()
+                        // Extract the value after '--services'
+    def servicesValue = serviceExistsOutput =~ /--services\s+(\S+)/
+    def extractedService = servicesValue ? servicesValue[0][1] : null
+    echo "Extracted Service: $extractedService"
     // def serviceExists = new groovy.json.JsonSlurper().parseText(serviceExistsOutput)
     // def serviceExists = sh(script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION}",returnStdout: true)
-    // echo "Returning ${serviceExists.services.status}"
-    def status=serviceExistsOutput['services'].size()<1
-    echo "wow $serviceExistsOutput[0]"
-    echo "LLLL"
-    echo serviceExistsOutput
+    // // echo "Returning ${serviceExists.services.status}"
+    // def status=serviceExistsOutput['services'].size()<1
+    // echo "wow $serviceExistsOutput[0]"
+    // echo "LLLL"
+    // echo serviceExistsOutput
 
-    echo "$status"
+    // echo "$status"
     // def status = "${serviceExists.services.status}"
     // def status = '[INACTIVE]'
     // echo status
