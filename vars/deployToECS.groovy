@@ -7,7 +7,7 @@ def call(String imageUri) {
         returnStdout: true
     ).trim()
     def serviceExists = sh(script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION}", returnStatus: true)
-    echo ${serviceExists}.failures
+    echo "${serviceExists}"
     
     // if (serviceExists != 0) {
 
