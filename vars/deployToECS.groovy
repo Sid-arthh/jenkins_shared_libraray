@@ -20,8 +20,8 @@ def call(String imageUri) {
 
     //     }
     // else echo "HELLO@"
-    if (serviceExists != 0) {
-
+    if ("$serviceExists" != 0) {
+        echo "OHH"
         sh "aws ecs update-service --cluster $ECS_CLUSTER_NAME --service $ECS_SERVICE_NAME  --region ${AWS_REGION} --desired-count 1 --force-new-deployment"
     } else {
 
