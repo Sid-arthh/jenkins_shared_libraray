@@ -11,7 +11,7 @@ def call(String imageUri) {
     script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION} ",
     returnStdout: true
         ).trim()
-                        // Find the index of "status" within the JSON
+                
     int statusIndex = serviceExistsOutput.indexOf("\"status\":")
     if (statusIndex != -1) {
         int statusValueStart = serviceExistsOutput.indexOf("\"", statusIndex + 9)
