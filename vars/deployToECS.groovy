@@ -1,8 +1,9 @@
 def call(String imageUri) {
+
+    
     def taskDefinition = ecsUtils(imageUri)
-     def extractedStatus ='null'
+    def extractedStatus ='null'
     echo "Generated Task Definition: ${taskDefinition}"
-    // sh "aws ecs register-task-definition --cli-input-json '${taskDefinition}' --region ${AWS_REGION}"
     def taskDefinitionArn = sh(
         script: "aws ecs register-task-definition --cli-input-json '${taskDefinition}' --query 'taskDefinition.taskDefinitionArn' --output text",
         returnStdout: true
