@@ -6,8 +6,14 @@ def call(String imageUri) {
         script: "aws ecs register-task-definition --cli-input-json '${taskDefinition}' --query 'taskDefinition.taskDefinitionArn' --output text",
         returnStdout: true
     ).trim()
-    def serviceExists = sh(script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION}",returnStdout: true)
-    echo "Returning ${serviceExists}"
+    def serviceExistsOutput = sh(
+    script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION} --no-cli-pager --output json",
+    returnStdout: true
+        )
+
+    def serviceExists = new groovy.json.JsonSlurper().parseText(serviceExistsOutput)
+    // def serviceExists = sh(script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION}",returnStdout: true)
+        echo "Returning ${serviceExists}"
     
     // if (serviceExists != 0) {
 
