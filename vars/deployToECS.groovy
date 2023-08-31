@@ -12,10 +12,10 @@ def call(String imageUri) {
         ).trim()
     echo serviceExistsOutput
                         // Extract the value after '--services'
-    def match = serviceExistsOutput =~ /"services":\s*\[([^\]]*)\]/
-    echo "HHHH $match"
-    def extractedServicesValue = match ? match[0][1] : "fall"
-    echo "Extracted Service: $extractedServicesValue"
+    // def match = serviceExistsOutput =~ /"services":\s*\[([^\]]*)\]/
+    // echo "HHHH $match"
+    // def extractedServicesValue = match ? match[0][1] : "fall"
+    // echo "Extracted Service: $extractedServicesValue"
     // def serviceExists = new groovy.json.JsonSlurper().parseText(serviceExistsOutput)
     // def serviceExists = sh(script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION}",returnStdout: true)
     // // echo "Returning ${serviceExists.services.status}"
