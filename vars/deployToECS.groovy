@@ -18,6 +18,8 @@ def call(String imageUri) {
         if (statusValueStart != -1 && statusValueEnd != -1) {
             def extractedStatus = serviceExistsOutput.substring(statusValueStart + 1, statusValueEnd)
             echo "Extracted Status: $extractedStatus"
+            // if("$extractedStatus"
+            
             } 
         else {
                  echo "Unable to extract status"
