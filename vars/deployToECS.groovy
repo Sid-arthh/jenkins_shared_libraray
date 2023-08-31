@@ -12,7 +12,7 @@ def call(String imageUri) {
         ).trim()
     echo serviceExistsOutput
                         // Extract the value after '--services'
-    // def match = serviceExistsOutput =~ /"services":\s*\[([^\]]*)\]/
+    def match = serviceExistsOutput =~ /"services":\s*\[([^\]]*)\]/
     // echo "HHHH $match"
     // def extractedServicesValue = match ? match[0][1] : "fall"
     // echo "Extracted Service: $extractedServicesValue"
