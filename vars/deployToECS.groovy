@@ -16,12 +16,14 @@ def call(String imageUri) {
         int statusValueStart = serviceExistsOutput.indexOf("\"", statusIndex + 9)
         int statusValueEnd = serviceExistsOutput.indexOf("\"", statusValueStart + 1)
         if (statusValueStart != -1 && statusValueEnd != -1) {
+            
             def extractedStatus = serviceExistsOutput.substring(statusValueStart + 1, statusValueEnd)
-            echo "Extracted Status: $extractedStatus"
+            echo "IExtracted Status: $extractedStatus"
             if("$extractedStatus"=='INACTIVE'){
                 sh "aws ecs create-service --cluster $ECS_CLUSTER_NAME --service-name $ECS_SERVICE_NAME --task-definition '${taskDefinitionArn}' --desired-count '1' --launch-type 'FARGATE' --network-configuration 'awsvpcConfiguration={subnets=[subnet-064d3272b4081aa26,subnet-026a4de3b32ce30d4],securityGroups=[sg-02a405b8bb4fd7b4f],assignPublicIp=ENABLED}' --enable-execute-command --region ${AWS_REGION}"
             }
             else {
+                
                 sh "aws ecs update-service --cluster $ECS_CLUSTER_NAME --service $ECS_SERVICE_NAME --task-definition '${taskDefinitionArn}' --desired-count '1' --network-configuration 'awsvpcConfiguration={subnets=[subnet-064d3272b4081aa26,subnet-026a4de3b32ce30d4],securityGroups=[sg-02a405b8bb4fd7b4f],assignPublicIp=ENABLED}' --enable-execute-command --region ${AWS_REGION} --force-new-deployment"
             }
             } 
@@ -35,7 +37,7 @@ def call(String imageUri) {
 
                     }
 
-    echo "Manisha is right? $extractedStatus"
+    echo "Extracted Status: $extractedStatus"
     // echo serviceExistsOutput
     //                     // Extract the value after '--services'
     // def match = serviceExistsOutput =~ /"status":\s*"([^"]*)"/
