@@ -14,7 +14,7 @@ def call(String imageUri) {
     // def serviceExists = new groovy.json.JsonSlurper().parseText(serviceExistsOutput)
     // def serviceExists = sh(script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION}",returnStdout: true)
     // echo "Returning ${serviceExists.services.status}"
-    echo "yeyee $serviceExistsOutput.services.status"
+    echo "yeyee $serviceExistsOutput ------------"
     // if("$serviceExists.services.status"!='INACTIVE' || "$serviceExists".isEmpty())
     // //     {
     // //     sh(script: "aws ecs create-service --cluster $ECS_CLUSTER_NAME --service-name $ECS_SERVICE_NAME --task-definition '${taskDefinitionArn}' --desired-count '1' --launch-type 'FARGATE' --network-configuration 'awsvpcConfiguration={subnets=[subnet-064d3272b4081aa26,subnet-026a4de3b32ce30d4],securityGroups=[sg-02a405b8bb4fd7b4f],assignPublicIp=ENABLED}' --enable-execute-command --region ${AWS_REGION}")
