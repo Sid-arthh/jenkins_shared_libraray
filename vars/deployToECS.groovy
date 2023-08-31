@@ -7,7 +7,7 @@ def call(String imageUri) {
         returnStdout: true
     ).trim()
     def serviceExistsOutput = sh(
-    script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION} --no-cli-pager --output json",
+    script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION} ",
     returnStdout: true
         )
     
