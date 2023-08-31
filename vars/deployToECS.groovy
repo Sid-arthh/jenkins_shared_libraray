@@ -10,6 +10,7 @@ def call(String imageUri) {
     script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION} ",
     returnStdout: true
         ).trim()
+    echo serviceExistsOutput
                         // Extract the value after '--services'
     def servicesValue = serviceExistsOutput =~ /--services\s+(\S+)/
     def extractedService = servicesValue ? servicesValue[0][1] : null
