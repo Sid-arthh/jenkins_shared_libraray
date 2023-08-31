@@ -13,7 +13,7 @@ def call(String imageUri) {
     echo serviceExistsOutput
                         // Extract the value after '--services'
     def servicesValue = serviceExistsOutput =~ /--services\s+(\S+)/
-    def extractedService = servicesValue ? servicesValue[0][1] : null
+    def extractedService = servicesValue ? servicesValue[0][1] : "failling"
     echo "Extracted Service: $extractedService"
     // def serviceExists = new groovy.json.JsonSlurper().parseText(serviceExistsOutput)
     // def serviceExists = sh(script: "aws ecs describe-services --cluster $ECS_CLUSTER_NAME --services $ECS_SERVICE_NAME --region ${AWS_REGION}",returnStdout: true)
