@@ -23,9 +23,10 @@ def DockerBuildPushToECR() {
     
     script {
         dir('app') {
-            sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 658694789184.dkr.ecr.us-east-1.amazonaws.com"
-            sh "docker tag $ECR_REPO_NAME 658694789184.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPO_NAME:${GIT_COMMIT}"
-            sh "docker push 658694789184.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPO_NAME:${GIT_COMMIT}"
+            sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/e5i0e5h0"
+            sh "docker tag $ECR_REPO_NAME public.ecr.aws/e5i0e5h0/$ECR_REPO_NAME:latest"
+            sh "docker push public.ecr.aws/e5i0e5h0/$ECR_REPO_NAME:latest"
         }
     }
+    return "public.ecr.aws/e5i0e5h0/$ECR_REPO_NAME:latest"
 }
