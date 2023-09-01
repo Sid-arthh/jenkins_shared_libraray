@@ -3,6 +3,7 @@ pipeline {
     agent any
     environment {
         AWS_REGION = "us-east-1"
+        ECR_REPO_NAME = "update"
         ECS_CLUSTER_NAME = 'SHARED_LIB'
         ECS_SERVICE_NAME = 'SERVICE5'
     }
