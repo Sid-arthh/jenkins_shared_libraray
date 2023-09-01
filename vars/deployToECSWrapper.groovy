@@ -5,8 +5,6 @@ def call(imageUri) {
         accessKeyVariable: 'AWS_ACCESS_KEY_ID',
         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
     ]]) {
-        // def ecrRepoName = 'your-ecr-repo-name'
-        
         deployToECS(imageUri)
     }
 }
