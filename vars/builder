@@ -10,7 +10,7 @@ def buildApp() {
     }
 }
 
-def buildDockerImageAndPushToECR(ECR_REPO_NAME, GIT_COMMIT) {
+def DockerBuildPushToECR() {
     stage('Building Image') {
         steps {
             script {
