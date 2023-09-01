@@ -6,8 +6,8 @@ def call() {
         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
     ]]) {
         // def ecrRepoName = 'your-ecr-repo-name'
-        appBuilder.buildApp()
-        def imageUri = appBuilder.DockerBuildPushToECR()
+        
+        def imageUri = 
         deployToECS(imageUri)
     }
 }
