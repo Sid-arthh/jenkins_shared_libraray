@@ -7,9 +7,7 @@ def call() {
     ]]) {
         // def ecrRepoName = 'your-ecr-repo-name'
         appBuilder.buildApp()
-        appBuilder.DockerBuildPushToECR(ECR_REPO_NAME, GIT_COMMIT)
-        def imageUri = "nginx:latest"
-        
+        def imageUri = appBuilder.DockerBuildPushToECR()
         deployToECS(imageUri)
     }
 }
