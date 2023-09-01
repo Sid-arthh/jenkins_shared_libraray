@@ -1,4 +1,4 @@
-# Jenkins Shared Library for Deploying and Updating ECS App
+# Jenkins Shared Library for Deploying and Updating ECS App [FARGATE]
 
 This repository contains a Jenkins shared library for deploying and updating an application on Amazon Elastic Container Service (ECS). This shared library simplifies the deployment process by providing reusable Jenkins pipeline steps and functions.
 
