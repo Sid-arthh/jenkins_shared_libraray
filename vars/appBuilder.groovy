@@ -19,7 +19,7 @@ def DockerBuildPushToECR() {
         //         }
         //     }
         // }
-    }
+    // }
     
     // script {
     //     dir('app') {
