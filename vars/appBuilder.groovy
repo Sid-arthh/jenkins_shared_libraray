@@ -2,11 +2,9 @@ def buildApp() {
     // stage('Build_App') {
     //     steps {
             script {
-                dir('app') {
     
                 sh "ls"
                 sh "mvn clean package"
-                }
             }
     //     }
     // }
