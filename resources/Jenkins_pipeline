@@ -12,6 +12,8 @@ pipeline {
                 cleanWs()
             }
         }
+    appBuilder.buildApp()
+    def imageUri = appBuilder.DockerBuildPushToECR()
         stage('Build and Deploy') {
             steps {
                 script {
