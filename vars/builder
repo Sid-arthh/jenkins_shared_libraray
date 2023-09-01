@@ -1,0 +1,31 @@
+def buildApp() {
+    stage('Build_App') {
+        steps {
+            script {
+                dir('app') {
+                    sh "mvn clean package"
+                }
+            }
+        }
+    }
+}
+
+def buildDockerImageAndPushToECR(ECR_REPO_NAME, GIT_COMMIT) {
+    stage('Building Image') {
+        steps {
+            script {
+                dir('app') {
+                    sh "docker build -t $ECR_REPO_NAME ."
+                }
+            }
+        }
+    }
+    
+    script {
+        dir('app') {
+            sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 658694789184.dkr.ecr.us-east-1.amazonaws.com"
+            sh "docker tag $ECR_REPO_NAME 658694789184.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPO_NAME:${GIT_COMMIT}"
+            sh "docker push 658694789184.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPO_NAME:${GIT_COMMIT}"
+        }
+    }
+}
