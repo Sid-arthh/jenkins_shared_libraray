@@ -1,7 +1,7 @@
 def call(String imageUri) {
     def taskDefinition = """
     {
-    "family": "nginx-2",
+    "family": "springboot",
     "networkMode": "awsvpc",
     "taskRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
@@ -22,9 +22,9 @@ def call(String imageUri) {
             "essential": true,
             "portMappings": [
                 {
-                    "name": "ngin-80-tcp",
-                    "containerPort": 80,
-                    "hostPort": 80,
+                    "name": "boot-8090-tcp",
+                    "containerPort": 8090,
+                    "hostPort": 8090,
                     "protocol": "tcp"
                 }
             ]
