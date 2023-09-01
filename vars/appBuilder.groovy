@@ -3,6 +3,7 @@ def buildApp() {
     //     steps {
     //         script {
     //             dir('app') {
+            sh "cd app"
             sh "mvn clean package"
     //             }
     //         }
@@ -15,6 +16,7 @@ def DockerBuildPushToECR() {
     //     steps {
     //         script {
     //             dir('app') {
+            sh "cd app"
             sh "docker build -t $ECR_REPO_NAME ."
         //         }
         //     }
