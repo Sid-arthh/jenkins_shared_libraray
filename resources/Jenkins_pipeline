@@ -7,11 +7,7 @@ pipeline {
         ECS_SERVICE_NAME = 'SERVICE5'
     }
     stages {
-        stage('clean workspace') {
-            steps {
-                cleanWs()
-            }
-        }
+
     stage('Build') {
         steps {
             script {
@@ -21,6 +17,11 @@ pipeline {
             }
         }
     }
+    stage('clean workspace') {
+            steps {
+                cleanWs()
+            }
+        }
         
   }
 }
