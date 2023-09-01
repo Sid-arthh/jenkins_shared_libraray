@@ -1,4 +1,4 @@
-def call() {
+def call(imageUri) {
     withCredentials([[
         $class: 'AmazonWebServicesCredentialsBinding',
         credentialsId: 'AWS CRED',
@@ -7,7 +7,6 @@ def call() {
     ]]) {
         // def ecrRepoName = 'your-ecr-repo-name'
         
-        def imageUri = 
         deployToECS(imageUri)
     }
 }
