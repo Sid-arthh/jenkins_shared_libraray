@@ -10,14 +10,23 @@ pipeline {
     stages {
 
     stage('Build') {
+        
         steps {
             script {
+                dir('app') {
+                    withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'AWS CRED',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
                 appBuilder.buildApp()
                 def imageUri = appBuilder.DockerBuildPushToECR()
                 deployToECS(imageUri)
-            }
+            } }
         }
     }
+}
     stage('clean workspace') {
             steps {
                 cleanWs()
