@@ -26,5 +26,3 @@ def DockerBuildPushToECR() {
             return "public.ecr.aws/e5i0e5h0/$ECR_REPO_NAME:latest"
 }
 }
-}
-}
