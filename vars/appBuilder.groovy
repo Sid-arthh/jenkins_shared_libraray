@@ -16,6 +16,16 @@ def DockerBuildPushToECR() {
     //     steps {
     //         script {
     //             dir('app') {
+        withCredentials([[
+        $class: 'AmazonWebServicesCredentialsBinding',
+        credentialsId: 'AWS CRED',
+        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+    ]]) {
+        // def ecrRepoName = 'your-ecr-repo-name'
+        
+        
+    }
             sh "cd app"
             sh "docker build -t $ECR_REPO_NAME ."
         //         }
