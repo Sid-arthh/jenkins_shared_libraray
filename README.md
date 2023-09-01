@@ -48,18 +48,16 @@ pipeline {
         // Define your stages here
     }
 }
+```
 
-Make sure to customize the environment variables and stages as per your project requirements.
-Usage
-
-    Make sure you have Jenkins configured with the shared library loaded from this repository.
-    Create or update your Jenkins pipeline using the provided Jenkinsfile.
-    Customize the environment variables and pipeline stages according to your application and deployment needs.
-    Run the Jenkins pipeline to deploy and update your ECS application.
+Make sure you have Jenkins configured with the shared library loaded from this repository.
+Create or update your Jenkins pipeline using the provided Jenkinsfile.
+Customize the environment variables and pipeline stages according to your application and deployment needs.
+Run the Jenkins pipeline to deploy and update your ECS application.
 
 License
 
-This project is licensed under the MIT License.
+This project is licensed under the TTN License.
 
 Feel free to contribute, report issues, or suggest improvements to help make this shared library even better
 
