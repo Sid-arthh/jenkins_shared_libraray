@@ -1,13 +1,13 @@
 def buildApp() {
     // stage('Build_App') {
     //     steps {
-    //         script {
-    //             dir('app') {
+            script {
+                dir('app') {
     
-            sh "ls"
-            sh "mvn clean package"
-    //             }
-    //         }
+                sh "ls"
+                sh "mvn clean package"
+                }
+            }
     //     }
     // }
 }
@@ -15,8 +15,8 @@ def buildApp() {
 def DockerBuildPushToECR() {
     // stage('Building Image') {
     //     steps {
-    //         script {
-    //             dir('app') {
+    script {
+     dir('app') {
         withCredentials([[
         $class: 'AmazonWebServicesCredentialsBinding',
         credentialsId: 'AWS CRED',
@@ -26,7 +26,7 @@ def DockerBuildPushToECR() {
         // def ecrRepoName = 'your-ecr-repo-name'
         
         
-    }
+    
             sh "ls"
             sh "docker build -t $ECR_REPO_NAME ."
         //         }
@@ -42,4 +42,7 @@ def DockerBuildPushToECR() {
     //     }
     // }
             return "public.ecr.aws/e5i0e5h0/$ECR_REPO_NAME:latest"
+}
+}
+}
 }
