@@ -23,7 +23,8 @@ pipeline {
                 appBuilder.buildApp()
                 def imageUri = appBuilder.DockerBuildPushToECR()
                 deployToECS(imageUri)
-            } }
+            } 
+            }
         }
     }
 }
