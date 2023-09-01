@@ -41,7 +41,7 @@ def DockerBuildPushToECR() {
             sh "docker push public.ecr.aws/e5i0e5h0/$ECR_REPO_NAME:latest"
     //     }
     // }
-            return "docker push public.ecr.aws/e5i0e5h0/$ECR_REPO_NAME:latest"
+            return "public.ecr.aws/e5i0e5h0/$ECR_REPO_NAME:latest"
 }
 }
 }
