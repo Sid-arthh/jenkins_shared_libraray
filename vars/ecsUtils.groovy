@@ -24,7 +24,7 @@ def call(String imageUri) {
                 {
                     "name": "boot-8090-tcp",
                     "containerPort": 8090,
-                    "hostPort":80,
+                    "hostPort":8090,
                     "protocol": "tcp"
                 }
             ]
