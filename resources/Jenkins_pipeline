@@ -17,16 +17,10 @@ pipeline {
             script {
                 appBuilder.buildApp()
                 def imageUri = appBuilder.DockerBuildPushToECR()
+                deployToECS(imageUri)
             }
         }
     }
-        stage('Build and Deploy') {
-            steps {
-                script {
-                    // Call the wrapper function from the shared library
-                    deployToECSWrapper(imageUri)
-                }
-            }
-        }
-    }
+        
+  }
 }
