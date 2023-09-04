@@ -30,7 +30,7 @@ pipeline {
                     appBuilder.buildApp()
                     imageUri = appBuilder.DockerBuildPushToECR()
                 }
-                deployToECS(imageUri)
+                deployToECS(env.imageUri)
             } 
             }
         }
