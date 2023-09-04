@@ -6,6 +6,7 @@ pipeline {
         ECR_REPO_NAME = "update"
         ECS_CLUSTER_NAME = 'SHARED_LIB'
         ECS_SERVICE_NAME = 'SERVICE5'
+        imageUri = ''
     }
     stages {
 
@@ -20,8 +21,10 @@ pipeline {
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
-                appBuilder.buildApp()
-                def imageUri = appBuilder.DockerBuildPushToECR()
+                if (env.imageUri == '') {
+                    appBuilder.buildApp()
+                    imageUri = appBuilder.DockerBuildPushToECR()
+                }
                 deployToECS(imageUri)
             } 
             }
