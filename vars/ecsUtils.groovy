@@ -1,7 +1,7 @@
-def call(String imageUri) {
+def call(String imageUri,String AppName,String Port,String familyName) {
     def taskDefinition = """
     {
-    "family": "springboot",
+    "family": "'${familyName}'",
     "networkMode": "awsvpc",
     "taskRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
@@ -22,9 +22,9 @@ def call(String imageUri) {
             "essential": true,
             "portMappings": [
                 {
-                    "name": "boot-8090-tcp",
-                    "containerPort": 8090,
-                    "hostPort":8090,
+                    "name": "'${AppName}'",
+                    "containerPort": "'${PORT}'",
+                    "hostPort": "'${PORT}'",
                     "protocol": "tcp"
                 }
             ]
