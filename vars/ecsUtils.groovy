@@ -1,7 +1,7 @@
 def call(String imageUri,String AppName,String Port,String familyName) {
     def taskDefinition = """
     {
-    "family": "'${familyName}'",
+    "family": "nginx-latests",
     "networkMode": "awsvpc",
     "taskRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::491396807599:role/ecsTaskExecutionRole",
@@ -22,9 +22,9 @@ def call(String imageUri,String AppName,String Port,String familyName) {
             "essential": true,
             "portMappings": [
                 {
-                    "name": "'${AppName}'",
-                    "containerPort": "'${PORT}'",
-                    "hostPort": "'${PORT}'",
+                    "name": "nginx",
+                    "containerPort": "80",
+                    "hostPort": "80",
                     "protocol": "tcp"
                 }
             ]
