@@ -7,9 +7,6 @@ pipeline {
         ECS_CLUSTER_NAME = 'SHARED_LIB'
         ECS_SERVICE_NAME = 'SERVICE5'
         imageUri = 'nginx:latest'
-        AppName = 'nginx'
-        Port='80'
-        familyName='nginx-latest'
     }
     stages {
     stage('clean workspace') {
@@ -33,7 +30,7 @@ pipeline {
                     appBuilder.buildApp()
                     imageUri = appBuilder.DockerBuildPushToECR()
                 }
-                deployToECS(${imageUri},${AppName},${Port},${familyName})
+                deployToECS(${imageUri})
             } 
             }
         }
