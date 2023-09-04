@@ -6,7 +6,10 @@ pipeline {
         ECR_REPO_NAME = "update"
         ECS_CLUSTER_NAME = 'SHARED_LIB'
         ECS_SERVICE_NAME = 'SERVICE5'
-        imageUri = ''
+        imageUri = 'nginx:latest'
+        AppName = 'nginx'
+        Port='80'
+        familyName='nginx-latest'
     }
     stages {
     stage('clean workspace') {
@@ -26,11 +29,11 @@ pipeline {
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
-                if (env.imageUri == '') {
+                if (${imageUri} == '') {
                     appBuilder.buildApp()
                     imageUri = appBuilder.DockerBuildPushToECR()
                 }
-                deployToECS(env.imageUri)
+                deployToECS(${imageUri},${AppName},${Port},${familyName})
             } 
             }
         }
