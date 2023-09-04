@@ -9,6 +9,11 @@ pipeline {
         imageUri = ''
     }
     stages {
+    stage('clean workspace') {
+            steps {
+                cleanWs()
+            }
+        }
 
     stage('Build') {
         
@@ -31,11 +36,7 @@ pipeline {
         }
     }
 }
-    stage('clean workspace') {
-            steps {
-                cleanWs()
-            }
-        }
+
         
   }
 }
