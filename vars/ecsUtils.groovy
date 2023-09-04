@@ -23,8 +23,8 @@ def call(String imageUri) {
             "portMappings": [
                 {
                     "name": "nginx",
-                    "containerPort": "80",
-                    "hostPort": "80",
+                    "containerPort": 80,
+                    "hostPort": 80,
                     "protocol": "tcp"
                 }
             ]
