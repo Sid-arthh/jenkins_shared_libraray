@@ -26,11 +26,12 @@ pipeline {
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
-                if (${imageUri} == '') {
+                echo "${imageUri}"
+                if ("${imageUri}" == '') {
                     appBuilder.buildApp()
                     imageUri = appBuilder.DockerBuildPushToECR()
                 }
-                deployToECS(${imageUri})
+                deployToECS("${imageUri}")
             } 
             }
         }
