@@ -1,4 +1,4 @@
-def call(String imageUri,String AppName,String Port,String familyName) {
+def call(String imageUri) {
     def taskDefinition = """
     {
     "family": "nginx-latests",
