@@ -9,21 +9,7 @@ This repository contains a Jenkins shared library for deploying and updating an 
 - jenkins_pipeline: The main Jenkins pipeline script that utilizes the shared library.
 
 ### Vars Directory
-
-#### 1. `appBuilder.groovy`
-
-This file contains functions for building and Dockerizing your application.
-
-- buildApp(): Builds the application using Maven.
-- DockerBuildPushToECR(): Builds a Docker image and pushes it to Amazon Elastic Container Registry (ECR).
-
-#### 2. `deployToECS.groovy`
-
-This file contains a function for deploying the application to ECS.
-
-- call(String imageUri): Deploys the application to ECS based on the provided Docker image URI.
-
-#### 3. `ecsUtils.groovy`
+#### 1. `ecsUtils.groovy`
 
 ##### The ecsUtils.groovy file defines an ECS task definition JSON in Groovy code. This task definition is used to configure how your Docker container should run within an ECS service or task when using AWS Fargate. Let's break down the key components of this task definition:
     Family Name: springboot
@@ -48,6 +34,21 @@ This file contains a function for deploying the application to ECS.
         Port Mapping: Maps container port 8090 to host port 8090 using TCP protocol.
 
 This script allows you to dynamically generate a task definition based on the Docker image URI you provide. This task definition is crucial for running your application on AWS Fargate within an ECS service or task.
+
+#### 2. `appBuilder.groovy`
+
+This file contains functions for building and Dockerizing your application.
+
+- buildApp(): Builds the application using Maven.
+- DockerBuildPushToECR(): Builds a Docker image and pushes it to Amazon Elastic Container Registry (ECR).
+
+#### 3. `deployToECS.groovy`
+
+This file contains a function for deploying the application to ECS.
+
+- call(String imageUri): Deploys the application to ECS based on the provided Docker image URI.
+
+
 
 ## Jenkins Pipeline
 
